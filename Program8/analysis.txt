@@ -1,0 +1,6 @@
+Tyler Andreasen
+Read total of :15385: lines from file :src\Program8\dracula.txt.
+Total Nodes in the BST :10276:. Root node value :dracula:.
+Tree Height :41:.
+Maximum Possible Nodes from Height :2199023255552:.
+Count of unused nodes (based on maximum possible) :2199023245276:.
