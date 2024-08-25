@@ -1,0 +1,6 @@
+Tyler Andreasen
+Bubble Integers 0.70072
+Selection Integers 0.2458775
+Bubble Strings 0.7579796
+Selection Strings 0.2666453
+System Strings 0.0093603

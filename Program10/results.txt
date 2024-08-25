@@ -1,0 +1,6 @@
+Tyler Andreasen
+Bubble Sort : 0.6988127
+Insertion Sort : 0.1486264
+Selection Sort : 0.190887
+TimSort Sort : 0.0167629
+Quicksort : 0.2111252

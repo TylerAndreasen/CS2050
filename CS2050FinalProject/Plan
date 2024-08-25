@@ -1,0 +1,29 @@
+This is a very tentative planning doc, as I do not have a strict assignment page to go off of.
+
+The premise of the assignment is to create an event based simulation which models vehicles
+traveling between nodes. We will be given a set of initial vehicles and nodes for them to
+travel between.
+
+Each vehicle will have properties like maximum speed, a Decision Tree (BST) to make choices:
+to left, right, and freeze, depending on what occurs in the node (if a node blocks traffic in
+one direction, the vehicle must turn around).
+
+Nodes will also have data like if they are blocked, but I am less clear on the intended structure.
+Each will have a left and right, as the Nodes are a doubly linked list, but not graph, so no up/down.
+
+
+Node
+    Node left, right;
+    boolean leftBlocked, rightBlocked;
+
+Vehicle
+    static int[] DEFINED_COLORS;
+    int maximumSpeed, color;
+    BST decisionTree;
+
+BST
+    BSTNode root;
+
+BSTNode
+    BSTNode left, right;
+    int value;

@@ -1,0 +1,90 @@
+README:: The below is a handful of incomplete methods for a Timsort which I stopped implementing as Java has a
+Timsort inlcuded, because of course it does.
+
+/**Preforms a Timsort on the parameter in, and returns the sorted int[].
+	 *
+	 * Idea behind it is to maximize the effectiveness of Selection
+	 * and Merge. Break your input data up into small chunks, run
+	 * Insertion on each block, then Merge the sorted chunks.
+	 *
+	 * To maximize the sorts, you want a power of 2 chunks, and
+	 * chunks should be fairly small. Given we have 19_999 elements
+	 * (between 2^14 and ^15).
+	 * */
+	private static int[] customTimSort(int[] in)
+	{
+		//Value represents how many chunks to be Insertion Sorted.
+		int nextSmallestPowerOfTwo = 0;
+		if (in.length < 10)
+			return customInsertionSort(in);
+		for (int i = 1; i < in.length/2; i++) // Maximum is arbitrary and far higher than will be reached.
+		{
+			if (Math.pow(2,i) > in.length)
+			{
+				nextSmallestPowerOfTwo = i-1;
+				break;
+			}
+		}
+		final int runLength = (int) ceil((in.length*1f) / ((nextSmallestPowerOfTwo)*1f)),
+		runCount = (int) ceil((in.length*1f) / ((runLength)*1f));
+		//System.out.println(runLength);
+		int[][] operativeData = new int[runCount][];
+		int remainder = in.length;
+		//Insertion Sort
+		for (int i = 0; i < runCount; i++)
+		{
+			remainder -= runLength;
+			operativeData[i] = new int[(runLength > remainder ? runLength : remainder)];
+			System.out.println("Timsort Run Numnber :"+i+": ");
+			for (int j = 0; j < operativeData[i].length-1; j++)
+			{
+				operativeData[i][j] = in[(i*runLength)+j];
+			}
+		}
+		for (int[] insertionArray : operativeData)
+			insertionArray = customInsertionSort(insertionArray);
+		int[] toMerge = new int[in.length];
+		for (int i = 0; i < runCount; i++)
+		{
+			for (int j = 0; j < operativeData[i].length; j++)
+			{
+				toMerge[(i*runLength)+j] = operativeData[i][j];
+			}
+		}
+
+		//Merge Sort -
+
+		int[] output = mergeSort(toMerge, runLength);
+
+		return output;
+	}
+	/**Merge Sorts an input array.
+	 * Taken almost character-for-character from the ODS Book.
+	 */
+	private static int[]  mergeSort(int[] a, int runLength) {
+		if (a.length <= runLength) return a;
+		int[] a0 = Arrays.copyOfRange(a, 0, a.length/2);
+		int[] a1 = Arrays.copyOfRange(a, a.length/2, a.length);
+		mergeSort(a0, runLength);
+		mergeSort(a1, runLength);
+		merge(a0, a1, a);
+		return a;
+	}
+
+	/**Merges two arrays into one, and returns the resultant array.
+	 * Taken almost character-for-character from the ODS Book.
+	 */
+	private static int[]  merge(int[] a0, int[] a1, int[] a) {
+		int i0 = 0, i1 = 0;
+		for (int i = 0; i < a.length; i++) {
+			if (i0 == a0.length)
+				a[i] = a1[i1++];
+			else if (i1 == a1.length)
+				a[i] = a0[i0++];
+			else if (a0[i0] < a1[i1])
+				a[i] = a0[i0++];
+			else
+				a[i] = a1[i1++];
+		}
+		return a;
+	}
