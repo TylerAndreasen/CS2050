@@ -1,0 +1,7 @@
+Tyler Andreasen
+Bubble Sort on    20000 Integers in: 0.6754285
+Selection Sort on 20000Integers in:  0.2416997
+Insertion Sort on 20000 Integers in: 0.1468073
+Bubble Sort on    10000 Strings in:  1.1336067
+Selection Sort on 10000 Strings in:  0.3071191
+System Sort on    10000 Strings in:  0.0144828

@@ -1,0 +1,72 @@
+This is a planning document for my first attempt at making a console-based calculator using Java.
+There will be a visual version later, but for now, I intend to just get a text based on going.
+
+What are the Big Picture pieces I need?
+    User Input
+        User can input either:
+            1. A value, then an operator, then another value.
+            2. A value followed by an operator followed by another value.
+            3. A special operator, then two disinct values.
+        Special keys:
+            q: quit
+            h//how: describes the basic input options, lists the basic operators, and the special operators
+
+    Parsing
+        Translating values into numbers
+        Reading basic operators
+        Reading special operators
+
+    Calculations
+        I will need a field which holds the first and second value (floats),
+        Some value to determine a normal operator
+        A special case to manage special operators.
+ else
+		{
+			int[] order = new int[sections.length];
+
+			for (int i = 0; i < order.length; i++)
+			{
+				if (Pattern.matches(highPresOps, sections[i]))
+				{
+					if (i%2 != 1)
+					{
+						System.out.println("Invalid Calculation, sections["+i+"] (:"+sections[i]+":) contains a high precedence operator.");
+						return "";
+					} else
+					{
+						order[i] = 2;
+					}
+				} else if (Pattern.matches(lowPresOps, sections[i]))
+				{
+					if (i%2 != 1)
+					{
+						System.out.println("Invalid Calculation, sections["+i+"] (:"+sections[i]+":) contains a low precedence operator.");
+						return "";
+					} else
+					{
+						order[i] = 1;
+					}
+				} else
+				{
+					if (!Pattern.matches(digits, sections[i]))
+					{
+						System.out.println("Invalid Calculation, sections["+i+"] (:"+sections[i]+":) does not contain digits.");
+						return "";
+					} else
+					{
+						order[i] = -1;
+					}
+				}
+			}
+
+			boolean inputValid = true;
+			for (int i : order)
+			{
+				if (i != -1 & i != 1 & i != 2) //Laws of Boolean Algebra FTW, if it works the way I recall.
+					inputValid = false;
+			}
+			if (!inputValid)
+			{
+				System.out.println("Calculation Parsing Error, indecipherable value.");
+				return "";
+			}

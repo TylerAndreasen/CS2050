@@ -1,0 +1,5 @@
+Tyler Andreasen
+Document at :src\Program9\dracula.txt: contains the word "the" a total of :7844: times,
+contains a total of :10276: nodes,
+spanning a height of :17: nodes
+while a total of :131072: nodes could have been used.

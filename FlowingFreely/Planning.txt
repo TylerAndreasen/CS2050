@@ -1,0 +1,53 @@
+What do I need to build my own version of Flow Free?
+
+Flow - A series of connections between Cells.
+    AL<Position> notStack - scalable list of Positions.
+    boolean completed - turns true when flow includes two nodes of the same color.
+
+    ensureColorMatch()
+        int definedColor = notStack.get(0).getColor;
+        for each Position after first
+            int testColor = postion.getColor()
+            if testColor == -1 || testColor != def
+                for each later (inclusive) Position
+                    notStack.remove(position);
+
+    checkComplete()
+        this.ensureColorMatch()
+        if (this.notStack.get(0).isNode() && this.notStack.get(last).isNode())
+            completed = true;
+            return true;
+
+Position -
+    position byte[2] - the position in the level where the flow is.
+    boolean isNode - if the Cell is the node of a color.
+    int color, which will point to a Swing Color.
+
+    positionMatches(byte[] input)
+        if position[0] == input[0] && position[1] == input[1]
+            return true;
+        return false;
+
+Level
+    colors Color[n]
+    flows Flow[n]
+    nodes Position[2n]
+
+    testClickLocation(byte[2] location) - Attempt to detect a Flow being selected.
+        for each flow
+            if input location matches the most recent Position
+                set the flowToExtend to flow.
+            else
+                for each cell in the flow starting from the next most recent
+                    if input location matches Position
+
+
+    testDragLocation(byte[2] location) - Attempt to add a Position to a Flow.
+
+    onMouseRelease()
+        boolean finished = true;
+        for each flow
+            if !flow.checkComplete()
+                finished = false;
+        if finished == true
+            return "show finished"

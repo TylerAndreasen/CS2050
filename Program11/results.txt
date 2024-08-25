@@ -1,0 +1,19 @@
+Tyler Andreasen
+Red-Black Tree of :dracula.txt: had (with the same filter) :10989: Nodes.
+
+Hash Index 3 : Concatenates the ASCII character values of the key, then sums while alternating between
+doubling and tripling the value of each digit before adding to the sum. Seemingly quite inefficient.
+Hash Table Length :12347:.
+Hash Table Slots :161:, Load Factor :0.013039605:.
+Hash Table Total-Entries :10868: Load Factor :0.8802138:.
+Both of the above included as colliding Hash Table Entries are stored in chains.
+On review, the Total-Entry- and Slot-Based Load factors are the same when dealing with such small data sets.
+
+
+Hash Index 3 : Concatenates the ASCII character values of the key, then sums while alternating between
+doubling and tripling the value of each digit before adding to the sum. Seemingly quite inefficient.
+Hash Table Length :55547:.
+Hash Table Slots :161:, Load Factor :0.0028984463:.
+Hash Table Total-Entries :10868: Load Factor :0.19565412:.
+
+
